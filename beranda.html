@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NersGlucoCare - Beranda</title>
+  <style>
+    /* Import font Nunito */
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap');
+
+    /* Reset dan font dasar */
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background-color: #f5f5f5;
+    }
+    /* Header */
+    header {
+      background-color: #009688;
+      color: white;
+      padding: 0 16px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    header .hamburger {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 16px;
+      display: inline-block;
+    }
+    header .site-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    header .desktop-nav {
+      display: none;
+      margin-left: auto;
+    }
+    header .desktop-nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 16px;
+      font-weight: 500;
+    }
+    header .desktop-nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #009688;
+      padding-top: 56px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      transition: left 0.3s ease;
+      z-index: 1001;
+    }
+    .sidebar.open {
+      left: 0;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 16px;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .sidebar a:hover {
+      background-color: #00796B;
+    }
+    .sidebar .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Overlay untuk menutup sidebar di mobile */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.3);
+      display: none;
+      z-index: 1000;
+    }
+    .overlay.show {
+      display: block;
+    }
+
+    /* Konten utama */
+    .content {
+      margin-top: 56px;
+      padding: 16px;
+    }
+    .content h2 {
+      font-size: 1.25rem;
+      margin: 16px 0 8px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .card p {
+      margin: 8px 0;
+    }
+    .card ul {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+    .card ul li {
+      margin: 4px 0;
+    }
+
+    /* Tombol */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 8px;
+      background-color: #009688;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #00796B;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 16px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    /* Responsif untuk layar lebar */
+    @media (min-width: 768px) {
+      header .hamburger {
+        display: none;
+      }
+      .desktop-nav {
+        display: flex;
+      }
+      .content {
+        max-width: 720px;
+        margin: 56px auto 0 auto;
+      }
+      .sidebar {
+        left: 0;
+        width: 220px;
+        top: 56px;
+        padding-top: 0;
+      }
+      .sidebar .close-btn {
+        display: none;
+      }
+      .content {
+        margin-left: 220px;
+        margin-top: 56px;
+      }
+      .overlay {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Ikon Hamburger untuk membuka sidebar -->
+    <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+    <div class="site-title">NersGlucoCare</div>
+    <!-- Navigasi desktop -->
+    <nav class="desktop-nav">
+    <a href="beranda.html">Beranda</a>
+    <a href="logbook.html">LogBook</a>
+    <a href="grafik.html">Grafik Gula Darah</a>
+    <a href="edukasi.html">Edukasi Gizi</a>
+    <a href="pilih-login.html" class="btn-back">← Log Out</a>
+    </nav>
+  </header>
+
+  <!-- Sidebar (dari kiri) -->
+  <div class="sidebar" id="sidebar">
+    <div class="close-btn" onclick="toggleSidebar()">&times;</div>
+    <a href="index.html">Beranda</a>
+    <a href="logbook.html">LogBook</a>
+    <a href="grafik.html">Grafik Gula Darah</a>
+    <a href="edukasi.html">Edukasi Gizi</a>
+    <a href="pilih-login.html" class="btn-back">← Log Out</a>
+  </div>
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Konten utama -->
+  <div class="content">
+    <div class="card">
+      <h2>Ringkasan Kadar Gula</h2>
+      <p><strong>Saat ini:</strong> 130 mg/dL</p>
+      <p><strong>Status:</strong> Normal</p>
+    </div>
+    <div class="card">
+      <h2>Target Harian</h2>
+      <ul>
+        <li><strong>Langkah:</strong> 8000</li>
+        <li><strong>Kalori:</strong> 1500 kcal</li>
+        <li><strong>Kadar Gula:</strong> 100-140 mg/dL</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Pengingat</h2>
+      <ul>
+        <li>Minum obat jam 08:00</li>
+        <li>Cek gula darah jam 10:00</li>
+        <li>Berjalan 30 menit jam 07:00</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Jurnal Makan & Aktivitas</h2>
+      <p>Catat makanan harian, olahraga, dan gejala yang dirasakan.</p>
+      <button class="btn">Isi Jurnal</button>
+    </div>
+    <div class="card">
+      <h2>Chat Coaching</h2>
+      <p>Konsultasi dengan perawat untuk motivasi dan tanya jawab mengenai kesehatan Anda.</p>
+      <button class="btn">Chat Sekarang</button>
+    </div>
+    <footer>
+      &copy; 2025 NersGlucoCare
+    </footer>
+  </div>
+
+  <!-- JavaScript: toggle sidebar -->
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('overlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NersGlucoCare - Dashboard Perawat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <ul>
+      <li><a href="dashboard.html">Dashboard Perawat</a></li>
+      <li><a href="pilih-login.html" class="btn-back">← Log Out</a></li>
+    </ul>
+  </div>
+
+  <!-- Konten Utama -->
+  <div class="content">
+    <header>
+      <button id="hamburger">&#9776;</button>
+      <h1>Dashboard Perawat</h1>
+    </header>
+
+    <main>
+      <h2>Ringkasan Data Pasien</h2>
+      <div class="summary">
+        <div class="summary-item">
+          <h3>Total Pasien</h3>
+          <p>45</p>
+        </div>
+        <div class="summary-item">
+          <h3>Rata-rata Kadar</h3>
+          <p>120 mg/dL</p>
+        </div>
+        <div class="summary-item">
+          <h3>Kasus Kritis</h3>
+          <p>2</p>
+        </div>
+      </div>
+
+      <h2>Grafik Ringkasan</h2>
+      <div class="chart">
+        <div class="bar" style="height:60%;"></div>
+        <div class="bar" style="height:75%;"></div>
+        <div class="bar" style="height:50%;"></div>
+        <div class="bar" style="height:85%;"></div>
+        <div class="bar" style="height:70%;"></div>
+      </div>
+
+      <h2>Masukan Pasien</h2>
+      <div class="feedback">
+        <form>
+          <label for="feedback">Masukkan Masukan:</label>
+          <textarea id="feedback" placeholder="Tulis masukan tentang perawatan..."></textarea>
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+
+      <h2>Notifikasi</h2>
+      <ul class="notifications">
+        <li>Pasien B perlu tindak lanjut.</li>
+        <li>Data gula terbaru Pasien C telah masuk.</li>
+        <li>Periksa jadwal kontrol Pasien D minggu ini.</li>
+      </ul>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
